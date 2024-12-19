@@ -1,0 +1,15 @@
+.instructions-button {
+  padding: 0.75rem;
+  font-size: 16px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.instructions-button:hover {
+  background: var(--gray-400);
+  color: white;
+  border-color: var(--gray-700);
+}
