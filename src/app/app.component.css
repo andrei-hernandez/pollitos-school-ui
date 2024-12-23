@@ -1,0 +1,26 @@
+/* Asegurarnos de que el body y html ocupen toda la altura de la pantalla */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal de la página que ocupa toda la altura de la pantalla */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;  /* Organizar los elementos de arriba a abajo */
+  min-height: 100vh;  /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+}
+
+/* El contenido principal ocupa el espacio disponible */
+.main-content {
+  flex: 1;  /* Esto hace que el main ocupe todo el espacio restante */
+}
+
+/* Estilo básico del footer */
+footer {
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}

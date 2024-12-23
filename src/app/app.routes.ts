@@ -1,13 +1,14 @@
-import { Routes } from '@angular/router'
+import {Routes} from '@angular/router'
+import InstructionsComponent from './features/pages/instructions/instructions.component'
+import {HomeComponent} from './features/home/pages/home/home.component'
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/instructions',
-    pathMatch: 'full'
+    component: HomeComponent
   },
   {
     path: 'instructions',
-    loadComponent: () => import('./features/pages/instructions/instructions.component')
+    component: InstructionsComponent
   }
 ]
