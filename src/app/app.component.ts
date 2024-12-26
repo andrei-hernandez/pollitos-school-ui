@@ -1,38 +1,54 @@
-import { Component } from '@angular/core'
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router'
+/* eslint-disable */
+import {Component, OnInit} from '@angular/core'
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router'
 import {DefaultHeaderComponent} from './layout/headers/default-header/default-header.component'
-import {FooterComponent} from './layout/footer/footer.component';
-import {ZetcollegeHeaderComponent} from './layout/headers/zetcollege-header/zetcollege-header.component';
-import {
-  GerardoinstituteHeaderComponent
-} from './layout/headers/gerardoinstitute-header/gerardoinstitute-header.component';
+import {FooterComponent} from './layout/footer/footer.component'
+import {SchoolHeaderComponent} from './layout/headers/school-header/school-header.component'
+import {filter} from 'rxjs'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DefaultHeaderComponent, FooterComponent, ZetcollegeHeaderComponent, GerardoinstituteHeaderComponent],
+  imports: [RouterOutlet, DefaultHeaderComponent, FooterComponent, SchoolHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'pollitos-school-ui'
+export class AppComponent implements OnInit {
+  headerType: string = 'default' // Valor inicial del headerType
 
-  headerType: string = 'default'
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Configurar header según la ruta activa
-        if (event.url === '/school1') {
-          this.headerType = 'school1'
-        } else if (event.url === '/school2') {
-          this.headerType = 'school2'
-        } else {
-          this.headerType = 'default'
-        }
-      }
-    });
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    // Escucha cambios en la navegación para actualizar el headerType
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.setHeaderType()
+      })
+  }
+
+  setHeaderType(): void {
+    // Obtiene la ruta activa y actualiza el headerType
+    const currentRoute = this.getCurrentRoute(this.activatedRoute)
+    const path = currentRoute?.snapshot.routeConfig?.path
+
+    switch (path) {
+      case 'zetcollege':
+        this.headerType = 'zetcollege'
+        break
+      case 'gerardoinstitute':
+        this.headerType = 'gerardoinstitute'
+        break
+      default:
+        this.headerType = 'default'
+    }
+  }
+
+  private getCurrentRoute(route: ActivatedRoute): ActivatedRoute {
+    // Recorre las rutas anidadas para encontrar la activa
+    while (route.firstChild) {
+      route = route.firstChild
+    }
+    return route
+  }
 }

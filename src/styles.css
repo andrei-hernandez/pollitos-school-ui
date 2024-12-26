@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background-color: #f7fafc; /* Gris claro */
+  background-color: #f7fafc;
 }
