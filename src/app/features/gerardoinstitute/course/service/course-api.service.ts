@@ -28,6 +28,6 @@ export class CourseService {
   }
 
   deleteCourse(school: string, id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${school}/course/${id}`);
+    return this.http.delete(`${this.baseUrl}/${school}/course/${id}`)
   }
 }

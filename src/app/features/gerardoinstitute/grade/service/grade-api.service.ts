@@ -28,6 +28,6 @@ export class GradeService {
   }
 
   deleteGrade(school: string, id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${school}/grade/${id}`);
+    return this.http.delete(`${this.baseUrl}/${school}/grade/${id}`)
   }
 }

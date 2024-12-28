@@ -19,11 +19,11 @@ export class StudentService {
     return this.http.get<StudentModel>(`${this.baseUrl}/${school}/student/${id}`)
   }
 
-  createStudent(school: string, studentData: any): Observable<StudentModel> {
+  createStudent(school: string, studentData: StudentModel): Observable<StudentModel> {
     return this.http.post<StudentModel>(`${this.baseUrl}/${school}/student`, studentData)
   }
 
-  updateStudent(school: string, id: number, studentData: any): Observable<StudentModel> {
+  updateStudent(school: string, id: number, studentData: StudentModel): Observable<StudentModel> {
     return this.http.put<StudentModel>(`${this.baseUrl}/${school}/student/${id}`, studentData)
   }
 
