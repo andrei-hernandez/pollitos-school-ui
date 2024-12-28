@@ -1,0 +1,50 @@
+<div class="flex min-h-screen flex-col">
+  <!-- Content -->
+  <div class="flex flex-grow">
+    <!-- Sidebar -->
+    <nav
+      class="bg-gray-800 text-white transition-all duration-300 flex-shrink-0"
+      [ngClass]="{ 'w-64': expanded, 'w-20': !expanded }"
+    >
+      <div class="flex flex-col items-center">
+        <button
+          (click)="toggleSidebar()"
+          class="bg-gray-700 hover:bg-gray-600 text-white p-2 rounded-full mt-4 focus:outline-none"
+        >
+          <span *ngIf="expanded" class="text-sm">Collapse</span>
+          <span *ngIf="!expanded" class="text-sm">Expand</span>
+        </button>
+
+        <div class="mt-6 w-full">
+          <div class="group">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Students</div>
+            <ul class="pl-8" *ngIf="expanded">
+              <li class="hover:text-gray-300"><a routerLink="/students/list">List Students</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/students/create">Create Student</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/students/edit">Edit Student</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/students/delete-grades">Delete Grades</a></li>
+            </ul>
+          </div>
+          <!-- Courses -->
+          <div class="group mt-4">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Courses</div>
+            <ul class="pl-8" *ngIf="expanded">
+              <li class="hover:text-gray-300"><a routerLink="/courses/list">List Courses</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/courses/create">Create Course</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/courses/edit">Edit Course</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/courses/delete-grades">Delete Grades</a></li>
+            </ul>
+          </div>
+          <!-- Grades -->
+          <div class="group mt-4">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Grades</div>
+            <ul class="pl-8" *ngIf="expanded">
+              <li class="hover:text-gray-300"><a routerLink="/grades/create">Create Grade</a></li>
+              <li class="hover:text-gray-300"><a routerLink="/grades/view-student">View Grades</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

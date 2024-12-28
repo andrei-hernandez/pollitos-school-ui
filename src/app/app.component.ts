@@ -14,6 +14,7 @@ import {filter} from 'rxjs'
 })
 export class AppComponent implements OnInit {
   headerType: string = 'default' // Valor inicial del headerType
+  title: string = 'pollitos-school-ui';
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }

@@ -1,9 +1,6 @@
 import {Routes} from '@angular/router'
-import InstructionsComponent from './features/pages/instructions/instructions.component'
-import {HomeComponent} from './features/home/pages/home/home.component'
-import {ZetcollegeComponent} from './features/zetcollege/zetcollege.component'
-import {GerardoinstituteComponent} from './features/gerardoinstitute/gerardoinstitute.component'
-
+import {InstructionsComponent} from './features/instructions/instructions.component'
+import {HomeComponent} from './features/home/home.component'
 export const routes: Routes = [
   {
     path: '',
@@ -14,12 +11,13 @@ export const routes: Routes = [
     component: InstructionsComponent
   },
   {
-    path: 'zetcollege',
-    component: ZetcollegeComponent
+    path: 'gerardoinstitute',
+    loadComponent: () => import('./features/gerardoinstitute/main/gerardoinstitute.component').then(m => m.GerardoinstituteComponent)
   },
   {
-    path: 'gerardoinstitute',
-    component: GerardoinstituteComponent
-  }
+    path: 'zetcollege',
+    loadComponent: () => import('./features/zetcollege/main/zetcollege.component').then(m => m.ZetcollegeComponent)
+  },
+
 
 ]
