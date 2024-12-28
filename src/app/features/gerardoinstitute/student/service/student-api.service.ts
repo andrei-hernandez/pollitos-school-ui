@@ -6,28 +6,28 @@ import {StudentModel} from "../../../../core/models/student.model"
 @Injectable({
   providedIn: 'root',
 })
-export class StudentService {
+export class StudentServiceGerardoInstitute {
   private baseUrl = 'http://localhost:8080/school/api'
 
   constructor(private http: HttpClient) {}
 
-  getAllStudents(school: string): Observable<StudentModel[]> {
-    return this.http.get<StudentModel[]>(`${this.baseUrl}/${school}/student`)
+  getAllStudents(): Observable<StudentModel[]> {
+    return this.http.get<StudentModel[]>(`${this.baseUrl}/gerardoinstitute/student`)
   }
 
-  getStudentById(school: string, id: number): Observable<StudentModel> {
-    return this.http.get<StudentModel>(`${this.baseUrl}/${school}/student/${id}`)
+  getStudentById(id: number): Observable<StudentModel> {
+    return this.http.get<StudentModel>(`${this.baseUrl}/gerardoinstitute/student/${id}`)
   }
 
-  createStudent(school: string, studentData: StudentModel): Observable<StudentModel> {
-    return this.http.post<StudentModel>(`${this.baseUrl}/${school}/student`, studentData)
+  createStudent( studentData: StudentModel): Observable<StudentModel> {
+    return this.http.post<StudentModel>(`${this.baseUrl}/gerardoinstitute/student`, studentData)
   }
 
-  updateStudent(school: string, id: number, studentData: StudentModel): Observable<StudentModel> {
-    return this.http.put<StudentModel>(`${this.baseUrl}/${school}/student/${id}`, studentData)
+  updateStudent(id: number, studentData: StudentModel): Observable<StudentModel> {
+    return this.http.put<StudentModel>(`${this.baseUrl}/gerardoinstitute/student/${id}`, studentData)
   }
 
-  deleteStudent(school: string, id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${school}/student/${id}`)
+  deleteStudent(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/gerardoinstitute/student/${id}`)
   }
 }

@@ -11,23 +11,23 @@ export class GradeService {
 
   constructor(private http: HttpClient) {}
 
-  getAllGrades(school: string): Observable<GradeModel[]> {
-    return this.http.get<GradeModel[]>(`${this.baseUrl}/${school}/grade`)
+  getAllGrades(): Observable<GradeModel[]> {
+    return this.http.get<GradeModel[]>(`${this.baseUrl}/zetcollege/grade`)
   }
 
-  getGradeById(school: string, id: number): Observable<GradeModel> {
-    return this.http.get<GradeModel>(`${this.baseUrl}/${school}/grade/${id}`)
+  getGradeById( id: number): Observable<GradeModel> {
+    return this.http.get<GradeModel>(`${this.baseUrl}/zetcollege/grade/${id}`)
   }
 
-  createGrade(school: string, gradeData: GradeModel): Observable<GradeModel> {
-    return this.http.post<GradeModel>(`${this.baseUrl}/${school}/grade`, gradeData)
+  createGrade( gradeData: GradeModel): Observable<GradeModel> {
+    return this.http.post<GradeModel>(`${this.baseUrl}/zetcollege/grade`, gradeData)
   }
 
-  updateGrade(school: string, id: number, gradeData: GradeModel): Observable<GradeModel> {
-    return this.http.put<GradeModel>(`${this.baseUrl}/${school}/grade/${id}`, gradeData)
+  updateGrade( id: number, gradeData: GradeModel): Observable<GradeModel> {
+    return this.http.put<GradeModel>(`${this.baseUrl}/zetcollege/grade/${id}`, gradeData)
   }
 
-  deleteGrade(school: string, id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${school}/grade/${id}`)
+  deleteGrade( id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/zetcollege/grade/${id}`)
   }
 }

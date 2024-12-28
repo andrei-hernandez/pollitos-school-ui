@@ -11,23 +11,23 @@ export class CourseService {
 
   constructor(private http: HttpClient) {}
 
-  getAllCourses(school: string): Observable<StudentModel[]> {
-    return this.http.get<StudentModel[]>(`${this.baseUrl}/${school}/course`)
+  getAllCourses(): Observable<StudentModel[]> {
+    return this.http.get<StudentModel[]>(`${this.baseUrl}/gerardoinstitute/course`)
   }
 
-  getCourseById(school: string, id: number): Observable<StudentModel> {
-    return this.http.get<StudentModel>(`${this.baseUrl}/${school}/course/${id}`)
+  getCourseById(id: number): Observable<StudentModel> {
+    return this.http.get<StudentModel>(`${this.baseUrl}/gerardoinstitute/course/${id}`)
   }
 
-  createCourse(school: string, courseData: StudentModel): Observable<StudentModel> {
-    return this.http.post<StudentModel>(`${this.baseUrl}/${school}/course`, courseData)
+  createCourse(courseData: StudentModel): Observable<StudentModel> {
+    return this.http.post<StudentModel>(`${this.baseUrl}/gerardoinstitute/course`, courseData)
   }
 
-  updateCourse(school: string, id: number, courseData: StudentModel): Observable<StudentModel> {
-    return this.http.put<StudentModel>(`${this.baseUrl}/${school}/course/${id}`, courseData)
+  updateCourse(id: number, courseData: StudentModel): Observable<StudentModel> {
+    return this.http.put<StudentModel>(`${this.baseUrl}/gerardoinstitute/course/${id}`, courseData)
   }
 
-  deleteCourse(school: string, id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${school}/course/${id}`)
+  deleteCourse(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/gerardoinstitute/course/${id}`)
   }
 }
