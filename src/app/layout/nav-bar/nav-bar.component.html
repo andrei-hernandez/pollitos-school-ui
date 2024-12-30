@@ -19,10 +19,12 @@
           <div class="group">
             <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Students</div>
             <ul class="pl-8" *ngIf="expanded">
-              <li class="hover:text-gray-300"><a routerLink="/students/list">List Students</a></li>
-              <li class="hover:text-gray-300"><a routerLink="/students/create">Create Student</a></li>
-              <li class="hover:text-gray-300"><a routerLink="/students/edit">Edit Student</a></li>
-              <li class="hover:text-gray-300"><a routerLink="/students/delete-grades">Delete Grades</a></li>
+              <li class="hover:text-gray-300"><a routerLink="./student/list">List Students</a></li>
+              <li class="hover:text-gray-300"><a routerLink="./student/create">Create Student</a></li>
+              <!--
+              <li class="hover:text-gray-300"><a [routerLink]="['./student/edit', studentId]">Edit Student</a></li>
+              <li class="hover:text-gray-300"><a [routerLink]="['./student/delete-grades', studentId]">Delete Grades</a></li>
+              -->
             </ul>
           </div>
           <!-- Courses -->

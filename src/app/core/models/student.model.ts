@@ -1,6 +1,6 @@
 export interface StudentModel {
   id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   age: number;
 }
