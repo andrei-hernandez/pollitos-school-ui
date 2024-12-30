@@ -17,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-      @for (student of students; track students) {
+      @for (student of students; track student.id) {
         <tr>
           <td class="border px-4 py-2 text-center">{{ student.id }}</td>
           <td class="border px-4 py-2">{{ student.firstName }}</td>

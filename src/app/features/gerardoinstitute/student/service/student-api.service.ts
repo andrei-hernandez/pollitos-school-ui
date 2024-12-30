@@ -28,4 +28,9 @@ export class StudentServiceGerardoInstitute {
     return this.http.put<StudentModel>(`${this.baseUrl}/student/${id}`, studentData)
   }
 
+  deleteStudent(id: number): Observable<any> {
+    console.log(this.baseUrl +'/grade/student/'+ id)
+    return this.http.delete(`${this.baseUrl}/grade/student/${id}`)
+  }
+
 }

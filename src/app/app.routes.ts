@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router'
-import { InstructionsComponent } from './features/instructions/instructions.component'
-import { HomeComponent } from './features/home/home.component'
+import {Routes} from '@angular/router'
+import {InstructionsComponent} from './features/instructions/instructions.component'
+import {HomeComponent} from './features/home/home.component'
 
 export const routes: Routes = [
   {
@@ -15,7 +15,10 @@ export const routes: Routes = [
     path: 'list',
     loadComponent: () => import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
   },
-
+  {
+    path: 'list/:id',
+    loadComponent: () => import('./features/gerardoinstitute/student/pages/edit-student/edit-student.component').then(m => m.EditStudentComponent)
+  },
   {
     path: 'gerardoinstitute',
     loadComponent: () =>
@@ -24,6 +27,7 @@ export const routes: Routes = [
       {
         path: 'student',
         children: [
+          {path: '', redirectTo: 'list', pathMatch: 'full'},
           {
             path: 'list',
             loadComponent: () =>

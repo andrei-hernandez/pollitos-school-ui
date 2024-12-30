@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {StudentModel} from "../../../../../core/models/student.model"
 import {StudentServiceGerardoInstitute} from "../../service/student-api.service"
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-list-student',
@@ -12,7 +13,7 @@ export class ListStudentComponent implements OnInit {
   students: StudentModel[] = []
   errorMessage: string = ''
 
-  constructor(private studentService: StudentServiceGerardoInstitute) {}
+  constructor(private studentService: StudentServiceGerardoInstitute, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchStudents()
@@ -32,9 +33,25 @@ export class ListStudentComponent implements OnInit {
 
   editStudent(id: number): void {
     console.log('Edit student with ID:', id)
+    this.router.navigate(['/gerardoinstitute/student/edit', id])
   }
 
   deleteStudent(id: number): void {
-    console.log('Delete student with ID:', id)
+    const isConfirmed = window.confirm('Are you sure you want to delete this student from grades?')
+    if (isConfirmed) {
+      console.log('Delete student with ID:', id)
+      this.studentService.deleteStudent(id).subscribe({
+        next: () => {
+          console.log('Student deleted successfully')
+          this.fetchStudents()
+        },
+        error: (err) => {
+          console.error('Error deleting student:', err)
+        },
+      })
+    } else {
+      console.log('Deletion cancelled')
+    }
   }
+
 }
