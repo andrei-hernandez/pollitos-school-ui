@@ -84,3 +84,9 @@ li a:hover {
   border-radius: 50%;
 }
 
+h2, a{
+  color: aliceblue;
+  font-style: italic;
+  text-decoration: none;
+}
+

@@ -1,9 +1,53 @@
-<html>
-    <body class="grid-container">
-        <header class="header">HEADER</header>
-        <nav class="navbar">NAVBAR</nav>
-        <aside class="sidebar">SIDEBAR</aside>
-        <article class="main">MAIN</article>
-        <footer class="footer">FOOTER</footer>
-    </body>
-</html>
+<nav class="navbar">
+  <ul>
+    <li><a routerLink="/Home">Home</a></li>
+    <li><a routerLink="/GerardoInstitute">Gerardo Institute</a></li>
+    <li><a routerLink="/ZetCollege">Zet College</a></li>
+    <li><a href="https://www.linkedin.com/feed/">About Me</a></li>
+  </ul>
+</nav>
+
+<nav class="sidebar">
+  <a class="position" routerLink="/Home">Students</a>
+  <a class="position" routerLink="/Home">Courses</a>
+  <a class="position" routerLink="/Home">Grades</a>
+</nav>
+
+<div class="container">
+  <div class="child-container">
+    <h1>LISTA DE ESTUDIANTES</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">AGE</th>
+          <th scope="col">FECHA DE INGRESO</th>
+          <th scope="col">UPDATE</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students(); index as i">
+          <th scope="row">{{ student.id }} </th>
+          <td>{{ student.name }} </td>
+          <td>{{ student.age }} </td>
+          <td>{{ student.date }} </td>
+          <td><button type="submit">UPDATE</button></td>
+          <td><button type="submit">DELETE</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>INGRESAR ALUMNO</h1>
+    <form class="formulario" [formGroup]="form" (ngSubmit)="handleSubmit()">
+      <p>DATOS DEL ALUMNO</p>
+      <input type="number" id="id" placeholder="ID" formControlName="id">
+      <input type="text" id="name" placeholder="Name" formControlName="name">
+      <input type="number" id="age" placeholder="Age" formControlName="age">
+      <input type="text" id="date" placeholder="Date of entry" formControlName="date">
+      <button class="button">Ingresar Alumno</button>
+    </form>
+  </div>
+</div>

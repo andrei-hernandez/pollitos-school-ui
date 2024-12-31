@@ -1,10 +1,10 @@
 <body>
   <nav class="navbar">
      <ul>
-        <li><a href="home.component.html">Home</a></li>
-        <li><a href="../../Institute/pages/gerardoInstitute.component.html">Gerardo Institute</a></li>
-        <li><a href="home.component.html">Zet College</a></li>
-        <li><a href="home.component.html">About Me</a></li>
+        <li><a routerLink="/Home">Home</a></li>
+        <li><a routerLink="/GerardoInstitute">Gerardo Institute</a></li>
+        <li><a routerLink="/ZetCollege">Zet College</a></li>
+        <li><a href="https://www.linkedin.com/feed/">About Me</a></li>
      </ul>
   </nav>
 
@@ -12,15 +12,19 @@
 
     <div class="split left">
       <div class="centered">
-        <img src="../../../core/utils/gerardoInstitute.png" alt="Gerardo Institute">
+        <a routerLink="/GerardoInstitute">
+        <img ngSrc="/gerardoInstitute.png" alt="Angular logo" width="50" height="200" />
         <h2>Gerardo Institute</h2>
+      </a>
       </div>
     </div>
     
     <div class="split right">
       <div class="centered">
-        <img src="../../../core/utils/zetCollage.jpg" alt="Zet College">
+        <a routerLink="/GerardoInstitute">
+        <img ngSrc="/zetCollege.jpg" alt="Angular logo" width="50" height="200" />
         <h2>Zet College</h2>
+      </a>
       </div>
     </div>
 
