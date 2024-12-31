@@ -54,4 +54,8 @@ export class ListStudentComponent implements OnInit {
     }
   }
 
+  addStudent(): void {
+    this.router.navigate(['/gerardoinstitute/student/create'])
+  }
+
 }

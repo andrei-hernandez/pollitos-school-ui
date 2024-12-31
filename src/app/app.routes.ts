@@ -5,6 +5,7 @@ import {HomeComponent} from './features/home/home.component'
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: HomeComponent
   },
   {
@@ -12,26 +13,21 @@ export const routes: Routes = [
     component: InstructionsComponent
   },
   {
-    path: 'list',
-    loadComponent: () => import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
-  },
-  {
-    path: 'list/:id',
-    loadComponent: () => import('./features/gerardoinstitute/student/pages/edit-student/edit-student.component').then(m => m.EditStudentComponent)
-  },
-  {
     path: 'gerardoinstitute',
     loadComponent: () =>
       import('./features/gerardoinstitute/pages/main/gerardoinstitute.component').then(m => m.GerardoinstituteComponent),
     children: [
       {
+        path: 'student/list',
+        loadComponent: () => import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
+      },
+      {
         path: 'student',
         children: [
-          {path: '', redirectTo: 'list', pathMatch: 'full'},
           {
-            path: 'list',
-            loadComponent: () =>
-              import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
           },
           {
             path: 'create',
@@ -42,11 +38,6 @@ export const routes: Routes = [
             path: 'edit/:id',
             loadComponent: () =>
               import('./features/gerardoinstitute/student/pages/edit-student/edit-student.component').then(m => m.EditStudentComponent)
-          },
-          {
-            path: 'delete-grades/:id',
-            loadComponent: () =>
-              import('./features/gerardoinstitute/student/pages/delete-student-grades/delete-student-grades.component').then(m => m.DeleteStudentGradesComponent)
           }
         ]
       }

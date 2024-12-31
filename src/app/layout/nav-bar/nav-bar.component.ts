@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {RouterLink} from "@angular/router"
+import {RouterLink, RouterOutlet} from "@angular/router"
 import {NgClass, NgIf} from "@angular/common"
 
 @Component({
@@ -7,7 +7,8 @@ import {NgClass, NgIf} from "@angular/common"
   imports: [
     RouterLink,
     NgIf,
-    NgClass
+    NgClass,
+    RouterOutlet
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
