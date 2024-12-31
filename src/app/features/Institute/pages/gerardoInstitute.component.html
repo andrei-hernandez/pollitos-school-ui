@@ -2,14 +2,14 @@
   <ul>
     <li><a routerLink="/Home">Home</a></li>
     <li><a routerLink="/GerardoInstitute">Gerardo Institute</a></li>
-    <li><a routerLink="/ZetCollege">Zet College</a></li>
+    <li><a routerLink="/Home">Zet College</a></li>
     <li><a href="https://www.linkedin.com/feed/">About Me</a></li>
   </ul>
 </nav>
 
 <nav class="sidebar">
-  <a class="position" routerLink="/Home">Students</a>
-  <a class="position" routerLink="/Home">Courses</a>
+  <a class="position" routerLink="/GerardoInstitute">Students</a>
+  <a class="position" routerLink="/courses">Courses</a>
   <a class="position" routerLink="/Home">Grades</a>
 </nav>
 
@@ -49,5 +49,8 @@
       <input type="text" id="date" placeholder="Date of entry" formControlName="date">
       <button class="button">Ingresar Alumno</button>
     </form>
+
+    <button (click)="clickHandler()">double me</button>
+
   </div>
 </div>
