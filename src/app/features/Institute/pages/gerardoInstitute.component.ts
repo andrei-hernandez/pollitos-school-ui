@@ -13,7 +13,7 @@ import { GerardoInterface } from '../../../core/models/gerardoInstitute.interfac
   styleUrl: './gerardoInstitute.component.css',
   providers: [GerardoService]
 })
-export class GerardoInstituteComponent {
+export class GerardoInstituteComponent implements OnInit {
   form = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
@@ -31,13 +31,20 @@ export class GerardoInstituteComponent {
   handleSubmit() {
     console.log(this.form.value);
   }
-  constructor(private schoolService: GerardoService) {
 
+  ////////////////MOSTRAR DATA/////////////////////////////
+  estudiantes: any[] = [];
+
+  constructor(private gerardoService: GerardoService) {
   }
 
-  clickHandler() {
-    this.schoolService.getApi().subscribe((data) => console.log(data)) // subscribe -> promises -> observables
-  }
-
+  ngOnInit(){
+    this.gerardoService.getStudents()
+    .subscribe((estudiante: any) => {
+      this.estudiantes = estudiante;
+    }
+    )
+  
+    this.gerardoService.getStudents().subscribe((data) => console.log(data))}
 
 }

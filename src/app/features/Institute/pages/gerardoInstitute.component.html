@@ -8,8 +8,8 @@
 </nav>
 
 <nav class="sidebar">
-  <a class="position" routerLink="/GerardoInstitute">Students</a>
-  <a class="position" routerLink="/courses">Courses</a>
+  <a class="position" routerLink="/Home">Students</a>
+  <a class="position" routerLink="./Courses">Courses</a>
   <a class="position" routerLink="/Home">Grades</a>
 </nav>
 
@@ -22,6 +22,7 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">NAME</th>
+          <th scope="col">LAST NAME</th>
           <th scope="col">AGE</th>
           <th scope="col">FECHA DE INGRESO</th>
           <th scope="col">UPDATE</th>
@@ -29,11 +30,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students(); index as i">
+        <tr *ngFor="let student of estudiantes;">
           <th scope="row">{{ student.id }} </th>
-          <td>{{ student.name }} </td>
+          <td>{{ student.firstName }} </td>
+          <td>{{ student.lastName }} </td>
           <td>{{ student.age }} </td>
-          <td>{{ student.date }} </td>
+          <td>{{ student.creationDate }} </td>
           <td><button type="submit">UPDATE</button></td>
           <td><button type="submit">DELETE</button></td>
         </tr>
@@ -49,8 +51,6 @@
       <input type="text" id="date" placeholder="Date of entry" formControlName="date">
       <button class="button">Ingresar Alumno</button>
     </form>
-
-    <button (click)="clickHandler()">double me</button>
 
   </div>
 </div>

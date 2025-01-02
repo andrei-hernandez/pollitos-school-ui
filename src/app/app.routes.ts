@@ -1,32 +1,27 @@
 import { Routes } from '@angular/router'
 
-import {HomeComponent} from './features/Home/pages/home.component';
-import {GerardoInstituteComponent} from './features/Institute/pages/gerardoInstitute.component';
-import {CoursesComponent} from './features/Institute/pages/courses/courses.component';
-
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'Home',
-    pathMatch: 'full'
+    loadComponent: ()=> import ('./features/Home/pages/home.component').then(m=> m.HomeComponent)
   },
   {
     path: 'Home',
-    component: HomeComponent
+    loadComponent: ()=> import ('./features/Home/pages/home.component').then(m=> m.HomeComponent)
   },
   {
     path: 'GerardoInstitute',
-    component: GerardoInstituteComponent,
+    loadComponent: ()=> import ('./features/Institute/pages/gerardoInstitute.component').then(m=> m.GerardoInstituteComponent),
     children:[
      {
       path: 'Courses',
-      component: CoursesComponent
-     } 
+      loadComponent: ()=> import ('./features/Institute/pages/courses/courses.component').then(m=> m.CoursesComponent),
+    } 
     ]
   },
   {
     path: 'courses',
-    component: CoursesComponent
+    loadComponent: ()=> import ('./features/Institute/pages/courses/courses.component').then(m=> m.CoursesComponent),
   },
    //{
     //path: 'instructions',
