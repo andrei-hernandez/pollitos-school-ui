@@ -1,0 +1,58 @@
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-bold mb-4">Edit Course</h2>
+
+  @if (isLoading) {
+    <div class="text-gray-500">Loading course data...</div>
+  }
+  @if (errorMessage) {
+    <div class="text-red-500">{{ errorMessage }}</div>
+  }
+  @if (!isLoading && !errorMessage) {
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium">Course Name</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        />
+        @if (courseForm.get('name')?.invalid && courseForm.get('name')?.touched) {
+          <div class="text-red-500">
+            Course name is required and must be at least 2 characters.
+          </div>
+        }
+      </div>
+
+      <div class="mb-4">
+        <label for="professorName" class="block text-sm font-medium">Professor Name</label>
+        <input
+          id="professorName"
+          formControlName="professorName"
+          type="text"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        />
+        @if (courseForm.get('professorName')?.invalid && courseForm.get('professorName')?.touched) {
+          <div class="text-red-500">
+            Professor name is required and must be at least 2 characters.
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+        [disabled]="courseForm.invalid"
+      >
+        Save Changes
+      </button>
+      <button
+        type="button"
+        class="ml-4 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
+        (click)="router.navigate(['/zetcollege/course/list'])"
+      >
+        Cancel
+      </button>
+    </form>
+  }
+</div>

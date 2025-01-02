@@ -1,11 +1,9 @@
-import { Component } from '@angular/core'
-import {NavBarComponent} from "../../../layout/nav-bar/nav-bar.component"
+import {Component} from '@angular/core'
+import {NavBarComponent} from "../../../../layout/nav-bar/nav-bar.component"
 
 @Component({
   selector: 'app-zetcollege',
-  imports: [
-    NavBarComponent
-  ],
+  imports: [NavBarComponent],
   templateUrl: './zetcollege.component.html',
   styleUrl: './zetcollege.component.css'
 })

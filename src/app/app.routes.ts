@@ -96,6 +96,84 @@ export const routes: Routes = [
   },
   {
     path: 'zetcollege',
-    loadComponent: () => import('./features/zetcollege/main/zetcollege.component').then(m => m.ZetcollegeComponent)
+    loadComponent: () =>
+      import('./features/zetcollege/pages/main/zetcollege.component').then(m => m.ZetcollegeComponent),
+    children: [
+      {
+        path: 'student',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/zetcollege/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import('./features/zetcollege/student/pages/create-student/create-student.component').then(m => m.CreateStudentComponent)
+          },
+          {
+            path: 'edit/:id',
+            loadComponent: () =>
+              import('./features/zetcollege/student/pages/edit-student/edit-student.component').then(m => m.EditStudentComponent)
+          }
+        ]
+      },
+      {
+        path: 'course',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/zetcollege/course/pages/list-course/list-course.component').then(m => m.ListCourseComponent)
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import('./features/zetcollege/course/pages/create-course/create-course.component').then(m => m.CreateCourseComponent)
+          },
+          {
+            path: 'edit/:id',
+            loadComponent: () =>
+              import('./features/zetcollege/course/pages/edit-course/edit-course.component').then(m => m.EditCourseComponent)
+          }
+        ]
+      },
+      {
+        path: 'grade',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/zetcollege/grade/pages/list-grade/list-grade.component').then(m => m.ListGradeComponent)
+          },
+          {
+            path: 'list/:id',
+            loadComponent: () =>
+              import('./features/zetcollege/grade/pages/view-grade/view-grade.component').then(m => m.ViewGradeComponent)
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import('./features/zetcollege/grade/pages/create-grade/create-grade.component').then(m => m.CreateGradeComponent)
+          }
+        ]
+      }
+    ]
   }
 ]
