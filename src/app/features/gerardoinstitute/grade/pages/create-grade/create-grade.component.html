@@ -1,0 +1,51 @@
+<div class="container mx-auto mt-8">
+  <h1 class="text-2xl font-bold mb-4">Create Grade</h1>
+  <form [formGroup]="gradeForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="studentId" class="block text-sm font-medium">Select Student</label>
+      <select id="studentId" formControlName="studentId" class="w-full border rounded px-3 py-2">
+        <option value="" disabled>Select a student</option>
+        @for (student of students; track student.id){
+          <option [value]="student.id">
+            {{ student.firstName }} {{ student.lastName }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="courseId" class="block text-sm font-medium">Select Course</label>
+      <select id="courseId" formControlName="courseId" class="w-full border rounded px-3 py-2">
+        <option value="" disabled>Select a course</option>
+        @for (course of courses; track course.id){
+          <option [value]="course.id">
+            {{ course.name }} ({{ course.professorName }})
+          </option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="score" class="block text-sm font-medium">Grade (0-100)</label>
+      <input
+        type="number"
+        id="score"
+        formControlName="score"
+        class="w-full border rounded px-3 py-2"
+        placeholder="Enter the grade"
+      />
+    </div>
+
+    @if (errorMessage){
+      <div class="text-red-500">{{ errorMessage }}</div>
+    }
+
+    <button
+      type="submit"
+      [disabled]="gradeForm.invalid"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+    >
+      Create Grade
+    </button>
+  </form>
+</div>

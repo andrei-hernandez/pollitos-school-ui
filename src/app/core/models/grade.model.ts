@@ -1,6 +1,9 @@
+import {StudentModel} from "./student.model"
+import {CourseModel} from "./course.model"
+
 export interface GradeModel {
   id: number;
-  studentId: number;
-  courseId: number;
+  student: StudentModel;
+  course: CourseModel;
   score: number;
 }

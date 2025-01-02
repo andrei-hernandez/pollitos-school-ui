@@ -2,32 +2,26 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import {GradeModel} from "../../../../core/models/grade.model"
+import {NewGradeModel} from "../../../../core/models/newGrade.model"
 
 @Injectable({
   providedIn: 'root',
 })
-export class GradeService {
+export class GradeServiceGerardoInstitute {
   private baseUrl = 'http://localhost:8080/school/api'
 
   constructor(private http: HttpClient) {}
 
-  getAllGrades(): Observable<GradeModel[]> {
-    return this.http.get<GradeModel[]>(`${this.baseUrl}/gerardoinstitute/grade`)
+  getGradeByStudentId(id: number): Observable<GradeModel[]> {
+    return this.http.get<GradeModel[]>(`${this.baseUrl}/GerardoInstitute/grade/student/${id}`)
   }
 
-  getGradeById(id: number): Observable<GradeModel> {
-    return this.http.get<GradeModel>(`${this.baseUrl}/gerardoinstitute/grade/${id}`)
-  }
-
-  createGrade(gradeData: GradeModel): Observable<GradeModel> {
-    return this.http.post<GradeModel>(`${this.baseUrl}/gerardoinstitute/grade`, gradeData)
+  createGrade(gradeData: NewGradeModel): Observable<GradeModel> {
+    return this.http.post<GradeModel>(`${this.baseUrl}/GerardoInstitute/grade`, gradeData)
   }
 
   updateGrade(id: number, gradeData: GradeModel): Observable<GradeModel> {
-    return this.http.put<GradeModel>(`${this.baseUrl}/gerardoinstitute/grade/${id}`, gradeData)
+    return this.http.put<GradeModel>(`${this.baseUrl}/GerardoInstitute/grade/${id}`, gradeData)
   }
 
-  deleteGrade(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/gerardoinstitute/grade/${id}`)
-  }
 }

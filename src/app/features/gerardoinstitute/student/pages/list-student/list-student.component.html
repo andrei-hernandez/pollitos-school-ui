@@ -32,6 +32,12 @@
           <td class="border px-4 py-2 text-center">{{ student.age }}</td>
           <td class="border px-4 py-2 text-center">
             <button
+              class="bg-green-500 text-white px-3 py-1 rounded mr-2"
+              (click)="viewStudent(student.id)"
+            >
+              View Grades
+            </button>
+            <button
               class="bg-blue-500 text-white px-3 py-1 rounded mr-2"
               (click)="editStudent(student.id)"
             >
@@ -39,9 +45,9 @@
             </button>
             <button
               class="bg-red-500 text-white px-3 py-1 rounded"
-              (click)="deleteStudent(student.id)"
+              (click)="deleteGradeStudent(student.id)"
             >
-              Delete
+              Delete grades
             </button>
           </td>
         </tr>

@@ -7,13 +7,14 @@ import {Router} from "@angular/router"
   selector: 'app-list-student',
   templateUrl: './list-student.component.html',
   styleUrls: ['./list-student.component.css'],
-  imports: [ ]
+  imports: []
 })
 export class ListStudentComponent implements OnInit {
   students: StudentModel[] = []
   errorMessage: string = ''
 
-  constructor(private studentService: StudentServiceGerardoInstitute, private router: Router) {}
+  constructor(private studentService: StudentServiceGerardoInstitute, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.fetchStudents()
@@ -36,7 +37,7 @@ export class ListStudentComponent implements OnInit {
     this.router.navigate(['/gerardoinstitute/student/edit', id])
   }
 
-  deleteStudent(id: number): void {
+  deleteGradeStudent(id: number): void {
     const isConfirmed = window.confirm('Are you sure you want to delete this student from grades?')
     if (isConfirmed) {
       console.log('Delete student with ID:', id)
@@ -58,4 +59,7 @@ export class ListStudentComponent implements OnInit {
     this.router.navigate(['/gerardoinstitute/student/create'])
   }
 
+  viewStudent(id: number): void {
+    this.router.navigate(['/gerardoinstitute/grade/list', id])
+  }
 }

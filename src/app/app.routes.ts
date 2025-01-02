@@ -81,14 +81,14 @@ export const routes: Routes = [
               import('./features/gerardoinstitute/grade/pages/list-grade/list-grade.component').then(m => m.ListGradeComponent)
           },
           {
+            path: 'list/:id',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/grade/pages/view-grade/view-grade.component').then(m => m.ViewGradeComponent)
+          },
+          {
             path: 'create',
             loadComponent: () =>
               import('./features/gerardoinstitute/grade/pages/create-grade/create-grade.component').then(m => m.CreateGradeComponent)
-          },
-          {
-            path: 'edit/:id',
-            loadComponent: () =>
-              import('./features/gerardoinstitute/grade/pages/edit-grade/edit-grade.component').then(m => m.EditGradeComponent)
           }
         ]
       }
