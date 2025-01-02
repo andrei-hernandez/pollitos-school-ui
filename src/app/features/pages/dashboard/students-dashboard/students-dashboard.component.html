@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card class="card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>list Students</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <a mat-button [routerLink]="['/listStudent', school]">Go</a>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>create student</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <a mat-button [routerLink]="['/addStudent', school]">Go</a>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Delete student's grades</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <a mat-button href="/">Go</a>
+        </mat-card-actions>
+    </mat-card>
+</div>

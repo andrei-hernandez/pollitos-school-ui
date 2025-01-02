@@ -1,0 +1,21 @@
+
+    <mat-form-field>
+        <mat-label>name course</mat-label>
+        <input matInput [(ngModel)]="course.nameCourse">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>professor name</mat-label>
+        <input matInput [(ngModel)]="course.professorName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>shool</mat-label>
+            <mat-select >
+                <mat-option value="1">GerardoInstitute</mat-option>
+                <mat-option value="2">ZetCollege</mat-option>
+            </mat-select>
+    </mat-form-field> 
+    <section>
+        <div class="example-button-row">
+          <button mat-flat-button (click)="createCourse()">create</button>
+        </div>
+    </section>

@@ -1,0 +1,17 @@
+<mat-form-field>
+    <mat-label>firstName</mat-label>
+    <input matInput [(ngModel)]="student.firstName">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>lastName</mat-label>
+    <input matInput [(ngModel)]="student.lastName">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>age</mat-label>
+    <input matInput [(ngModel)]="student.age">
+</mat-form-field>
+<section >
+    <div class="example-button-row">
+        <button mat-flat-button (click)="createStudent()">create</button>
+    </div>
+</section>
