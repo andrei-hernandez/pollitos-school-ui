@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import {StudentModel} from "../../../../core/models/student.model"
+import {CourseModel} from "../../../../core/models/course.model"
 
 @Injectable({
   providedIn: 'root',
 })
-export class CourseService {
+export class CourseServiceGerardoInstitute {
   private baseUrl = 'http://localhost:8080/school/api'
 
   constructor(private http: HttpClient) {}
 
-  getAllCourses(): Observable<StudentModel[]> {
-    return this.http.get<StudentModel[]>(`${this.baseUrl}/gerardoinstitute/course`)
+  getAllCourses(): Observable<CourseModel[]> {
+    return this.http.get<CourseModel[]>(`${this.baseUrl}/GerardoInstitute/course`)
   }
 
-  getCourseById(id: number): Observable<StudentModel> {
-    return this.http.get<StudentModel>(`${this.baseUrl}/gerardoinstitute/course/${id}`)
+  getCourseById(id: number): Observable<CourseModel> {
+    return this.http.get<CourseModel>(`${this.baseUrl}/GerardoInstitute/course/${id}`)
   }
 
-  createCourse(courseData: StudentModel): Observable<StudentModel> {
-    return this.http.post<StudentModel>(`${this.baseUrl}/gerardoinstitute/course`, courseData)
+  createCourse(courseData: CourseModel): Observable<CourseModel> {
+    return this.http.post<CourseModel>(`${this.baseUrl}/GerardoInstitute/course`, courseData)
   }
 
-  updateCourse(id: number, courseData: StudentModel): Observable<StudentModel> {
-    return this.http.put<StudentModel>(`${this.baseUrl}/gerardoinstitute/course/${id}`, courseData)
+  updateCourse(id: number, courseData: CourseModel): Observable<CourseModel> {
+    console.log('updateCourse', id, courseData)
+    return this.http.put<CourseModel>(`${this.baseUrl}/GerardoInstitute/course/${id}`, courseData)
   }
 
   deleteCourse(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/gerardoinstitute/course/${id}`)
+    return this.http.delete(`${this.baseUrl}/GerardoInstitute/course/${id}`)
   }
 }

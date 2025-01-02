@@ -1,12 +1,11 @@
 import {Component} from '@angular/core'
 import {RouterLink, RouterOutlet} from "@angular/router"
-import {NgClass, NgIf} from "@angular/common"
+import {NgClass} from "@angular/common"
 
 @Component({
   selector: 'app-nav-bar',
   imports: [
     RouterLink,
-    NgIf,
     NgClass,
     RouterOutlet
   ],

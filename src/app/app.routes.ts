@@ -18,16 +18,17 @@ export const routes: Routes = [
       import('./features/gerardoinstitute/pages/main/gerardoinstitute.component').then(m => m.GerardoinstituteComponent),
     children: [
       {
-        path: 'student/list',
-        loadComponent: () => import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
-      },
-      {
         path: 'student',
         children: [
           {
             path: '',
             redirectTo: 'list',
             pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/student/pages/list-student/list-student.component').then(m => m.ListStudentComponent)
           },
           {
             path: 'create',
@@ -38,6 +39,56 @@ export const routes: Routes = [
             path: 'edit/:id',
             loadComponent: () =>
               import('./features/gerardoinstitute/student/pages/edit-student/edit-student.component').then(m => m.EditStudentComponent)
+          }
+        ]
+      },
+      {
+        path: 'course',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/course/pages/list-course/list-course.component').then(m => m.ListCourseComponent)
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/course/pages/create-course/create-course.component').then(m => m.CreateCourseComponent)
+          },
+          {
+            path: 'edit/:id',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/course/pages/edit-course/edit-course.component').then(m => m.EditCourseComponent)
+          }
+        ]
+      },
+      {
+        path: 'grade',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/grade/pages/list-grade/list-grade.component').then(m => m.ListGradeComponent)
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/grade/pages/create-grade/create-grade.component').then(m => m.CreateGradeComponent)
+          },
+          {
+            path: 'edit/:id',
+            loadComponent: () =>
+              import('./features/gerardoinstitute/grade/pages/edit-grade/edit-grade.component').then(m => m.EditGradeComponent)
           }
         ]
       }

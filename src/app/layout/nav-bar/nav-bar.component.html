@@ -19,29 +19,37 @@
         </button>
 
         <div class="mt-6 w-full">
+          <!-- Students -->
           <div class="group">
             <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Students</div>
-            <ul class="pl-8" *ngIf="expanded">
-              <li class="hover:text-gray-300"><a routerLink="./student/list">List Students</a></li>
-              <li class="hover:text-gray-300"><a routerLink="./student/create">Create Student</a></li>
-            </ul>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./student/list">List Students</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./student/create">Create Student</a></li>
+              </ul>
+            }
           </div>
           <!-- Courses -->
           <div class="group mt-4">
             <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Courses</div>
-            <ul class="pl-8" *ngIf="expanded">
-              <li class="hover:text-gray-300"><a routerLink="/courses/list">List Courses</a></li>
-              <li class="hover:text-gray-300"><a routerLink="/courses/create">Create Course</a></li>
-            </ul>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./course/list">List Courses</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./course/create">Create Course</a></li>
+              </ul>
+            }
           </div>
           <!-- Grades -->
           <div class="group mt-4">
             <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Grades</div>
-            <ul class="pl-8" *ngIf="expanded">
-              <li class="hover:text-gray-300"><a routerLink="/grades/create">Create Grade</a></li>
-              <li class="hover:text-gray-300"><a routerLink="/grades/view-student">View Grades</a></li>
-            </ul>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./grade/create">Create Grade</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./grade/list">View Grades</a></li>
+              </ul>
+            }
           </div>
+
         </div>
       </div>
     </nav>
