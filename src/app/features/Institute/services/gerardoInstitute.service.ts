@@ -14,19 +14,19 @@ export class GerardoService {
   }
 
   getStudents() {
-    return this.http.get('http://localhost:8080/students');
+    return this.http.get<GerardoInterface[]>('http://localhost:8080/students');
   }
 
   create(estudiante: any) {
-    return this.http.post('http://localhost:8080/students', estudiante);
+    return this.http.post<GerardoInterface>('http://localhost:8080/students', estudiante);
   }
 
   update(id: number, estudiante: any) {
-    return this.http.put('http://localhost:8080/students/${id}', estudiante);
+    return this.http.put<GerardoInterface>(`http://localhost:8080/students/${id}`, estudiante);
   }
 
   delete(id: number) {
-    return this.http.delete('http://localhost:8080/students/${id}');
+    return this.http.delete<void>(`http://localhost:8080/students/${id}`);
   }
 
 }

@@ -12,12 +12,12 @@ export const routes: Routes = [
   {
     path: 'GerardoInstitute',
     loadComponent: ()=> import ('./features/Institute/pages/gerardoInstitute.component').then(m=> m.GerardoInstituteComponent),
-    children:[
+   /* children:[
      {
       path: 'Courses',
       loadComponent: ()=> import ('./features/Institute/pages/courses/courses.component').then(m=> m.CoursesComponent),
     } 
-    ]
+    ]*/
   },
   {
     path: 'courses',

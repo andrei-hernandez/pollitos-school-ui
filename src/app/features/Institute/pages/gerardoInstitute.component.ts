@@ -1,50 +1,92 @@
-import { Component, OnInit, signal } from '@angular/core'
-import { RouterLink, RouterOutlet } from '@angular/router'
-import { CommonModule } from '@angular/common'
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnInit, signal } from '@angular/core'
+import { Router, RouterLink, RouterOutlet } from '@angular/router'
+import { CommonModule, DatePipe } from '@angular/common'
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GerardoService } from '../services/gerardoInstitute.service'
 import { GerardoInterface } from '../../../core/models/gerardoInstitute.interface'
+import { from } from 'rxjs';
 
 
 @Component({
   selector: 'app-gerardoInstitute',
-  imports: [CommonModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe],
   templateUrl: './gerardoInstitute.component.html',
   styleUrl: './gerardoInstitute.component.css',
   providers: [GerardoService]
 })
 export class GerardoInstituteComponent implements OnInit {
-  form = new FormGroup({
-    id: new FormControl(''),
-    name: new FormControl(''),
-    age: new FormControl(''),
-    date: new FormControl('')
-  })
+  currentStundentID!: number;
 
-  students = signal([
-    { id: 1, name: "Eduardo Emmanuel Gonzalez Vazquez", age: 24, date: "18-Agosto-2018" },
-    { id: 2, name: "Gerardo Emmanuel Gonzalez Orea", age: 44, date: "18-Agosto-1997" },
-    { id: 3, name: "Claudia Vazquez Montero", age: 46, date: "18-Agosto-1995" },
-    { id: 4, name: "Eden Emmanuel Gonzalez Carrasco", age: 20, date: "18-Agosto-2048" },
-  ]);
-
-  handleSubmit() {
-    console.log(this.form.value);
-  }
-
+  isUpgradedButtonClicked: boolean = false;
   ////////////////MOSTRAR DATA/////////////////////////////
-  estudiantes: any[] = [];
+  estudiantes: GerardoInterface[] = [];
 
   constructor(private gerardoService: GerardoService) {
   }
 
-  ngOnInit(){
-    this.gerardoService.getStudents()
-    .subscribe((estudiante: any) => {
-      this.estudiantes = estudiante;
-    }
-    )
-  
-    this.gerardoService.getStudents().subscribe((data) => console.log(data))}
+  ngOnInit() {
+    this.loadAll();
+  }
 
+  /////////////////////////FORMULARIO//////////////////////////////
+  private fb = inject(FormBuilder);
+  private router = inject(Router)
+  private contactService = inject(GerardoService)
+
+  form = this.fb.group({
+    id: ['', [Validators.required]],
+    firstName: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    age: ['', [Validators.required]],
+  })
+
+  create() {
+    console.log("se mando")
+    const contact = this.form.value;
+    this.contactService.create(contact)
+      .subscribe({
+        next:()=>{
+          this.form.reset();
+          this.loadAll();
+        }
+      })
+  }
+
+  loadAll(){
+    this.gerardoService.getStudents()
+    .subscribe(estudiante => {
+      this.estudiantes = estudiante;
+    })
+  }
+
+  deleteStudent(estudiantes: GerardoInterface){
+    this.contactService.delete(estudiantes.id)
+    .subscribe(()=> {
+      this.loadAll();
+    })
+  }
+
+  fillStudent(student: any){
+    this.isUpgradedButtonClicked = true;
+    this.currentStundentID = student.id;
+    this.form.controls["id"].patchValue(student.id)
+    this.form.controls["id"].disable()
+    this.form.controls["firstName"].patchValue(student.firstName)
+    this.form.controls["lastName"].patchValue(student.lastName)
+    this.form.controls["age"].patchValue(student.age)
+  }
+
+  updateStudent(){
+    this.contactService.update(this.currentStundentID ,this.form.value).subscribe({
+      next:()=>{
+        this.loadAll();
+      }
+    })
+  }
+
+  cancelUpdate(){
+    this.isUpgradedButtonClicked = false;
+    this.form.reset();
+    this.form.controls["id"].enable()
+  }
 }
