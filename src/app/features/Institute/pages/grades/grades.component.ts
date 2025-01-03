@@ -1,20 +1,19 @@
-import { Component, inject, OnInit, signal } from '@angular/core'
-import { Router, RouterLink, RouterOutlet } from '@angular/router'
+import { Component,inject, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GerardoService } from '../services/gerardoInstitute.service'
-import { GerardoInterface } from '../../../core/models/gerardoInstitute.interface'
-import { from } from 'rxjs';
-
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { GerardoService } from '../../services/gerardoInstitute.service'
+import { GerardoInterface } from '../../../../core/models/gerardoInstitute.interface'
+import { SidebarComponent } from '../../components/sidebar/sidebar.component'
 
 @Component({
-  selector: 'app-gerardoInstitute',
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe],
-  templateUrl: './gerardoInstitute.component.html',
-  styleUrl: './gerardoInstitute.component.css',
+  selector: 'app-grades',
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe,SidebarComponent],
+  templateUrl: './grades.component.html',
+  styleUrl: './grades.component.css',
   providers: [GerardoService]
 })
-export class GerardoInstituteComponent implements OnInit {
+export class GradesComponent implements OnInit{
   currentStundentID!: number;
 
   isUpgradedButtonClicked: boolean = false;
@@ -90,3 +89,4 @@ export class GerardoInstituteComponent implements OnInit {
     this.form.controls["id"].enable()
   }
 }
+

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit  } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,15 +6,14 @@ import { GerardoService } from '../../services/gerardoInstitute.service'
 import { GerardoInterface } from '../../../../core/models/gerardoInstitute.interface'
 import { SidebarComponent } from '../../components/sidebar/sidebar.component'
 
-
 @Component({
-  selector: 'app-courses',
+  selector: 'app-students',
   imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe,SidebarComponent],
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css',
+  templateUrl: './students.component.html',
+  styleUrl: './students.component.css',
   providers: [GerardoService]
 })
-export class CoursesComponent implements OnInit{
+export class StudentsComponent implements OnInit{
   currentStundentID!: number;
 
   isUpgradedButtonClicked: boolean = false;
@@ -89,5 +88,4 @@ export class CoursesComponent implements OnInit{
     this.form.reset();
     this.form.controls["id"].enable()
   }
-
 }
