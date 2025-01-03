@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { RouterLink, RouterOutlet } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms';
-import { GerardoService } from '../../services/gerardoInstitute.service'
+import { GerardoService } from '../../services/gerardoInstituteStudents.service'
 import { SidebarComponent } from '../../components/sidebar/sidebar.component'
 
 

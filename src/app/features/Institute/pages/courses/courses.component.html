@@ -7,38 +7,35 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">NAME</th>
-            <th scope="col">LAST NAME</th>
-            <th scope="col">AGE</th>
-            <th scope="col">FECHA DE INGRESO</th>
+            <th scope="col">PROFESSOR NAME</th>
+            <th scope="col">DATE OF ENTRY</th>
             <th scope="col">UPDATE</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let student of estudiantes;">
-            <th scope="row">{{ student.id }} </th>
-            <td>{{ student.firstName }} </td>
-            <td>{{ student.lastName }} </td>
-            <td>{{ student.age }} </td>
-            <td>{{ student.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
+          <tr *ngFor="let curso of cursos;">
+            <th scope="row">{{ curso.id }} </th>
+            <td>{{ curso.name }} </td>
+            <td>{{ curso.professorName }} </td>
+            <td>{{ curso.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
   
-            <td><button (click)="fillStudent(student)">UPDATE</button></td>
+            <td><button (click)="fillStudent(curso)">UPDATE</button></td>
           </tr>
         </tbody>
       </table>
   
       <h1>INGRESAR CURSO</h1>
       <form class="formulario" [formGroup]="form">
-        <p>DATOS DEL ALUMNO</p>
+        <p>DATOS DEL CURSO</p>
         <input type="number" id="id" placeholder="ID" formControlName="id">
-        <input type="text" id="firstName" placeholder="First Name" formControlName="firstName">
-        <input type="text" id="lastName" placeholder="Last Name" formControlName="lastName">
-        <input type="number" id="age" placeholder="Age" formControlName="age">
+        <input type="text" id="name" placeholder="Course" formControlName="name">
+        <input type="text" id="professorName" placeholder="Professor Name" formControlName="professorName">
         @if (isUpgradedButtonClicked){
-          <button class="button" [disabled]="!form.valid" (click)="updateStudent()">Editar Alumno</button>
+          <button class="button" [disabled]="!form.valid" (click)="updateStudent()">Editar Curso</button>
   
           <button class="button" (click)="cancelUpdate()">Cancelar</button>
         } @else{
-          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Alumno</button>
+          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Curso</button>
         }
       </form>
   

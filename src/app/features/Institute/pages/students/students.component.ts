@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GerardoService } from '../../services/gerardoInstitute.service'
+import { GerardoService } from '../../services/gerardoInstituteStudents.service'
 import { GerardoInterface } from '../../../../core/models/gerardoInstitute.interface'
 import { SidebarComponent } from '../../components/sidebar/sidebar.component'
 
@@ -29,8 +29,7 @@ export class StudentsComponent implements OnInit{
 
   /////////////////////////FORMULARIO//////////////////////////////
   private fb = inject(FormBuilder);
-  private router = inject(Router)
-  private contactService = inject(GerardoService)
+  private contactService = inject(GerardoService);
 
   form = this.fb.group({
     id: ['', [Validators.required]],
@@ -41,8 +40,8 @@ export class StudentsComponent implements OnInit{
 
   create() {
     console.log("se mando")
-    const contact = this.form.value;
-    this.contactService.create(contact)
+    const student = this.form.value;
+    this.contactService.create(student)
       .subscribe({
         next:()=>{
           this.form.reset();

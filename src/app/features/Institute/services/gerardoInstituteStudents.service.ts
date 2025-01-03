@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
 import { GerardoInterface } from '../../../core/models/gerardoInstitute.interface'
 
 @Injectable({
