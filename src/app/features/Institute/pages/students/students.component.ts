@@ -94,6 +94,6 @@ export class StudentsComponent implements OnInit{
       alert(`Calificaciones Eliminadas del estudiante con el id: ${student.id}`)
       console.log("Calificaciones Eliminadas del estudiante con el id: ",student.id)
     });
-    
   }
+  
 }

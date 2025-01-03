@@ -10,6 +10,7 @@
             <th scope="col">PROFESSOR NAME</th>
             <th scope="col">DATE OF ENTRY</th>
             <th scope="col">UPDATE</th>
+            <th scope="col">DELETE GRADES</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
             <td>{{ curso.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
   
             <td><button (click)="fillStudent(curso)">UPDATE</button></td>
+            <td><button (click)="deleteGrades(curso)">DELETE</button></td>
           </tr>
         </tbody>
       </table>
