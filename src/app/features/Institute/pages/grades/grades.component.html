@@ -21,25 +21,42 @@
             <td>{{ student.age }} </td>
             <td>{{ student.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
   
-            <td><button (click)="fillStudent(student)">UPDATE</button></td>
+            <td><button (click)="getStudentGrades(student.id)">SEE GRADES</button></td>
           </tr>
         </tbody>
       </table>
+
+      @if (studentGrades.length > 0){
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">SCORE</th>
+              <th scope="col">STUDENT ID</th>
+              <th scope="col">COURSE ID</th>
+              <th scope="col">CREATION DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let grade of studentGrades;">
+              <th scope="row">{{ grade.id }} </th>
+              <td>{{ grade.score }} </td>
+              <td>{{ grade.studentId }} </td>
+              <td>{{ grade.courseId }} </td>
+              <td>{{ grade.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
+            </tr>
+          </tbody>
+        </table>
+      }
   
       <h1>INGRESAR CALIFICACION</h1>
       <form class="formulario" [formGroup]="form">
-        <p>DATOS DEL ALUMNO</p>
+        <p>DATOS DE LA CALIFCACION</p>
         <input type="number" id="id" placeholder="ID" formControlName="id">
-        <input type="text" id="firstName" placeholder="First Name" formControlName="firstName">
-        <input type="text" id="lastName" placeholder="Last Name" formControlName="lastName">
-        <input type="number" id="age" placeholder="Age" formControlName="age">
-        @if (isUpgradedButtonClicked){
-          <button class="button" [disabled]="!form.valid" (click)="updateStudent()">Editar Alumno</button>
-  
-          <button class="button" (click)="cancelUpdate()">Cancelar</button>
-        } @else{
-          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Alumno</button>
-        }
+        <input type="number" id="score" placeholder="Score" formControlName="score">
+        <input type="number" id="studentId" placeholder="Student Id" formControlName="studentId">
+        <input type="number" id="courseId" placeholder="Course Id" formControlName="courseId">
+          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Calificacion</button>
       </form>
   
     </div>

@@ -4,5 +4,14 @@ export interface GerardoInterface{
     lastName: string,
     age: number,
     creationDate: Date,
-    grades: null
+    grades: gradeInterface[]
+}
+
+
+export interface gradeInterface{
+    id: number;
+    score: number;
+    studentId: number;
+    courseId: number;
+    creationDate: Date;
 }

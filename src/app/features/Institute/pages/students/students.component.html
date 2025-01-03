@@ -11,6 +11,7 @@
             <th scope="col">AGE</th>
             <th scope="col">DATE OF ENTRY</th>
             <th scope="col">UPDATE</th>
+            <th scope="col">DELETE GRADES</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
             <td>{{ student.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
   
             <td><button (click)="fillStudent(student)">UPDATE</button></td>
+            <td><button (click)="deleteGrades(student)">DELETE</button></td>
           </tr>
         </tbody>
       </table>

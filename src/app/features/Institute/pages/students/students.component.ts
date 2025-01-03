@@ -87,4 +87,13 @@ export class StudentsComponent implements OnInit{
     this.form.reset();
     this.form.controls["id"].enable()
   }
+
+  deleteGrades(student: any){
+    console.log("OK")
+    this.contactService.delete(student.id).subscribe(()=>{
+      alert(`Calificaciones Eliminadas del estudiante con el id: ${student.id}`)
+      console.log("Calificaciones Eliminadas del estudiante con el id: ",student.id)
+    });
+    
+  }
 }

@@ -25,7 +25,7 @@ export class GerardoService {
   }
 
   delete(id: number) {
-    return this.http.delete<void>(`http://localhost:8080/students/${id}`);
+    return this.http.delete<void>(`http://localhost:8080/students/${id}/grades`);
   }
 
 }
