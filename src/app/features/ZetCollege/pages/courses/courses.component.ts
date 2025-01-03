@@ -2,17 +2,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GerardoServiceCourses } from '../../services/gerardoInstituteCourses.service'
+import { GerardoServiceCourses } from '../../../Institute/services/gerardoInstituteCourses.service'
 import { GerardoInterfaceCourses } from '../../../../core/models/gerardoInstituteCourses.interface'
-import { SidebarComponent } from '../../components/sidebar/sidebar.component'
-
+import { SidebarComponent } from '../../../Institute/components/sidebar/sidebar.component'
 
 @Component({
   selector: 'app-courses',
   imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe, SidebarComponent],
   templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css',
-  providers: [GerardoServiceCourses]
+  styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
   currentCoursesID!: number;
@@ -96,3 +94,4 @@ export class CoursesComponent implements OnInit {
   }
 
 }
+

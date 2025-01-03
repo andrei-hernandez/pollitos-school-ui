@@ -2,16 +2,16 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router'
 import { CommonModule, DatePipe } from '@angular/common'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GerardoService } from '../../services/gerardoInstituteStudents.service'
+import { GerardoService } from '../../../Institute/services/gerardoInstituteStudents.service'
 import { GerardoInterface } from '../../../../core/models/gerardoInstitute.interface'
-import { SidebarComponent } from '../../components/sidebar/sidebar.component'
+import { SidebarComponent } from '../../../Institute/components/sidebar/sidebar.component'
+
 
 @Component({
   selector: 'app-students',
   imports: [CommonModule, RouterLink, ReactiveFormsModule, DatePipe,SidebarComponent],
   templateUrl: './students.component.html',
-  styleUrl: './students.component.css',
-  providers: [GerardoService]
+  styleUrl: './students.component.css'
 })
 export class StudentsComponent implements OnInit{
   currentStundentID!: number;

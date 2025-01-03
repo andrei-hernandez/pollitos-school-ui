@@ -33,4 +33,27 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'zetCollege',
+    loadComponent: () => import('./features/ZetCollege/pages/zet-college/college.component').then(m => m.CollegeComponent),
+    children: [
+      {
+        path: '',
+        pathMatch: "full",
+        redirectTo: "students"
+      },
+      {
+        path: 'students',
+        loadComponent: () => import('./features/ZetCollege/pages/students/students.component').then(m => m.StudentsComponent),
+      },
+      {
+        path: 'courses',
+        loadComponent: () => import('./features/ZetCollege/pages/courses/courses.component').then(m => m.CoursesComponent),
+      },
+      {
+        path: 'grades',
+        loadComponent: () => import('./features/ZetCollege/pages/grades/grades.component').then(m => m.GradesComponent),
+      }
+    ]
+  }
 ]
