@@ -30,18 +30,15 @@ export class AppComponent implements OnInit {
 
   setHeaderType(): void {
     // Obtiene la ruta activa y actualiza el headerType
-    const currentRoute = this.getCurrentRoute(this.activatedRoute)
-    const path = currentRoute?.snapshot.routeConfig?.path
+    const currentUrl = this.router.url.toLowerCase();
 
-    switch (path) {
-      case 'zetcollege':
-        this.headerType = 'zetcollege'
-        break
-      case 'gerardoinstitute':
-        this.headerType = 'gerardoinstitute'
-        break
-      default:
-        this.headerType = 'default'
+    // Verifica si contiene palabras clave
+    if (currentUrl.includes('gerardoinstitute')) {
+      this.headerType = 'gerardoinstitute';
+    } else if (currentUrl.includes('zetcollege')) {
+      this.headerType = 'zetcollege';
+    } else {
+      this.headerType = 'default';
     }
   }
 
