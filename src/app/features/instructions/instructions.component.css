@@ -8,8 +8,4 @@
   transition: all 0.4s ease;
 }
 
-.instructions-button:hover {
-  background: var(--gray-400);
-  color: white;
-  border-color: var(--gray-700);
-}
+

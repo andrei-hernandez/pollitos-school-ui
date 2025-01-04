@@ -1,0 +1,60 @@
+<div class="flex min-h-screen flex-col">
+  <!-- Content -->
+  <div class="flex flex-grow">
+    <!-- Sidebar -->
+    <nav
+      class="bg-gray-800 text-white transition-all duration-300 flex-shrink-0"
+      [ngClass]="{ 'w-64': expanded, 'w-20': !expanded }"
+    >
+      <div class="flex flex-col items-center">
+        <button
+          (click)="toggleSidebar()"
+          class="bg-gray-700 hover:bg-gray-600 text-white p-2 rounded-full mt-4 focus:outline-none"
+        >
+          @if (expanded) {
+            <span class="text-sm">Collapse</span>
+          } @else {
+            <span class="text-sm">Expand</span>
+          }
+        </button>
+
+        <div class="mt-6 w-full">
+          <!-- Students -->
+          <div class="group">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Students</div>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./student/list">List Students</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./student/create">Create Student</a></li>
+              </ul>
+            }
+          </div>
+          <!-- Courses -->
+          <div class="group mt-4">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Courses</div>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./course/list">List Courses</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./course/create">Create Course</a></li>
+              </ul>
+            }
+          </div>
+          <!-- Grades -->
+          <div class="group mt-4">
+            <div class="p-2 pl-4 hover:bg-gray-600 cursor-pointer">Grades</div>
+            @if (expanded) {
+              <ul class="pl-8">
+                <li class="hover:text-gray-300"><a routerLink="./grade/create">Create Grade</a></li>
+                <li class="hover:text-gray-300"><a routerLink="./grade/list">View Grades</a></li>
+              </ul>
+            }
+          </div>
+
+        </div>
+      </div>
+    </nav>
+    <main class="w-full px-8">
+      <router-outlet/>
+    </main>
+  </div>
+</div>
