@@ -1,0 +1,44 @@
+<nav>
+    <div
+      class="w-full flex flex-wrap items-center mx-auto py-4"
+    >
+      <div class="flex items-center space-x-8">
+        <ul class="flex space-x-6">
+          <li>
+            <a
+              routerLink="/"
+              routerLinkActive="underline"
+              [routerLinkActiveOptions]="{exact: true}"
+              class="block hover:underline"
+              aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/students"
+              routerLinkActive="underline"
+              class="block hover:underline"
+              >Student</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/"
+              routerLinkActive="underline"
+              class="block hover:underline"
+              >Courses</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/"
+              routerLinkActive="underline"
+              class="block hover:underline"
+              >Grades</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,25 @@
+<mat-form-field>
+    <mat-label>Student</mat-label>
+    <mat-select [(ngModel)]="grade.studentId">
+        @for (student of students(); track $index) {
+            <mat-option value="{{ student.id }}">{{student.firstName + ' ' + student.lastName }}</mat-option>
+       }
+    </mat-select>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>course</mat-label>
+    <mat-select [(ngModel)]="grade.courseId">
+        @for (course of courses(); track $index) {
+            <mat-option value="{{ course.id }}">{{course.nameCourse }}</mat-option>
+       }
+    </mat-select>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>score</mat-label>
+    <input matInput [(ngModel)]="grade.score">
+</mat-form-field>
+<section>
+    <div class="example-button-row">
+      <button mat-flat-button (click)="addGrade()" >create</button>
+    </div>
+</section>
