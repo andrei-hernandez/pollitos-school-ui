@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="child-container">
+      <h1>ZET COLLEGE</h1>
+      <h1>LISTA DE CALIFICACIONES</h1>
+  
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">FECHA DE INGRESO</th>
+            <th scope="col">UPDATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of estudiantes;">
+            <th scope="row">{{ student.id }} </th>
+            <td>{{ student.firstName }} </td>
+            <td>{{ student.lastName }} </td>
+            <td>{{ student.age }} </td>
+            <td>{{ student.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
+  
+            <td><button (click)="getStudentGrades(student.id)">SEE GRADES</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      @if (studentGrades.length > 0){
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">SCORE</th>
+              <th scope="col">STUDENT ID</th>
+              <th scope="col">COURSE ID</th>
+              <th scope="col">CREATION DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let grade of studentGrades;">
+              <th scope="row">{{ grade.id }} </th>
+              <td>{{ grade.score }} </td>
+              <td>{{ grade.studentId }} </td>
+              <td>{{ grade.courseId }} </td>
+              <td>{{ grade.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
+            </tr>
+          </tbody>
+        </table>
+      }
+  
+      <h1>INGRESAR CALIFICACION</h1>
+      <form class="formulario" [formGroup]="form">
+        <p>DATOS DE LA CALIFCACION</p>
+        <input type="number" id="id" placeholder="ID" formControlName="id">
+        <input type="number" id="score" placeholder="Score" formControlName="score">
+        <input type="number" id="studentId" placeholder="Student Id" formControlName="studentId">
+        <input type="number" id="courseId" placeholder="Course Id" formControlName="courseId">
+          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Calificacion</button>
+      </form>
+  
+    </div>
+  </div>

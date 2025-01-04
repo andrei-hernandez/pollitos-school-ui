@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="child-container">      
+      <h1>GERARDO INSTITUTE</h1>
+      <h1>LISTA DE ESTUDIANTES</h1>
+  
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">DATE OF ENTRY</th>
+            <th scope="col">UPDATE</th>
+            <th scope="col">DELETE GRADES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of estudiantes;">
+            <th scope="row">{{ student.id }} </th>
+            <td>{{ student.firstName }} </td>
+            <td>{{ student.lastName }} </td>
+            <td>{{ student.age }} </td>
+            <td>{{ student.creationDate | date:'dd/MM/yyyy hh:mm a' }} </td>
+  
+            <td><button (click)="fillStudent(student)">UPDATE</button></td>
+            <td><button (click)="deleteGrades(student)">DELETE</button></td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <h1>INGRESAR ALUMNO</h1>
+      <form class="formulario" [formGroup]="form">
+        <p>DATOS DEL ALUMNO</p>
+        <input type="number" id="id" placeholder="ID" formControlName="id">
+        <input type="text" id="firstName" placeholder="First Name" formControlName="firstName">
+        <input type="text" id="lastName" placeholder="Last Name" formControlName="lastName">
+        <input type="number" id="age" placeholder="Age" formControlName="age">
+        @if (isUpgradedButtonClicked){
+          <button class="button" [disabled]="!form.valid" (click)="updateStudent()">Editar Alumno</button>
+  
+          <button class="button" (click)="cancelUpdate()">Cancelar</button>
+        } @else{
+          <button class="button" [disabled]="!form.valid" (click)="create()">Ingresar Alumno</button>
+        }
+      </form>
+  
+    </div>
+  </div>
