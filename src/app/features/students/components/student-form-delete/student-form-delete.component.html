@@ -1,0 +1,39 @@
+<div class="container mx-auto p-4">
+  <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden md:max-w-lg">
+    <div class="md:flex">
+      <div class="w-full p-4">
+        <div class="text-left mb-4">
+            <h2 class="text-2xl font-bold">Delete Student</h2>
+        </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              <p>The following student will be removed:</p>
+              <p>Name: {{ this.data.firstName }}</p>
+              <p>ID: {{ this.data.id }}</p>
+              <p>School: {{ this.data.schoolId }}</p>
+              <p>press DELETE to continue!</p>
+            </label>
+
+          <div class="flex items-center justify-end space-x-4">
+              <button
+                (click)="close()"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button">
+                Cancel
+              </button>
+              <button
+                (click)="onDeleteStudent()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                Delete
+              </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+
