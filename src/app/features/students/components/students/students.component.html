@@ -1,0 +1,92 @@
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<div class="container mx-auto p-4">
+  <div class="relative inline-block w-full">
+    <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+    (change)="selectedSchool($event)"
+    >
+      <option value="">Select School</option>
+      <option value="GerardoInstitute">GerardoInstitute</option>
+      <option value="ZetCollege">Zet College</option>
+    </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</div>
+
+<div class="text-left">
+  <button
+    class="font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline
+           bg-blue-500 hover:bg-blue-700 text-white
+           disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-gray-700"
+    type="button"
+    (click)="createStudent()"
+    [disabled] = "activeSchool() === ''"
+  >
+    Add student {{ activeSchool() }} </button>
+</div>
+
+<br>
+
+<div class="flex items-center justify-center v-screen">
+<table class="table-auto bg-white shadow-md rounded-lg">
+  <thead>
+  <tr>
+    <th class="px-4 py-2 text-gray-600">ID</th>
+    <th class="px-4 py-2 text-gray-600">First Name</th>
+    <th class="px-4 py-2 text-gray-600">Last Name</th>
+    <th class="px-4 py-2 text-gray-600">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <!-- Show message if there is no data and activeSchool is empty -->
+  <tr *ngIf="!activeSchool()">
+    <td class="px-4 py-2 text-center text-gray-500" colspan="5">
+      No data available. Please select a school.
+    </td>
+  </tr>
+
+  <ng-container *ngIf="activeSchool() == 'GerardoInstitute' || activeSchool() == 'ZetCollege'">
+  <tr *ngFor="let student of students(); let i = index">
+    <td class="border px-4 py-2">{{ student.id }}</td>
+    <td class="border px-4 py-2">{{ student.firstName }}</td>
+    <td class="border px-4 py-2">{{ student.lastName }}</td>
+    <td class="border px-4 py-2">{{ student.age }}</td>
+    <td class="border px-4 py-2">
+      <button class="flex items-center p-2 bg-gray-500 text-white rounded-full hover:bg-red-600 focus:outline-none" title="Delete student">
+        <i (click)="deleteStudent(student)" class="fas fa-trash-alt"></i>
+      </button>
+    </td>
+    <td class="border px-4 py-2">
+      <button class="flex items-center p-2 bg-gray-500 text-white rounded-full hover:bg-red-600 focus:outline-none" title="Update student">
+        <i (click)="updateStudent(student)" class="fas fa-pencil-alt"></i>
+      </button>
+    </td>
+    <td class="border px-4 py-2">
+      <button class="flex items-center p-2 bg-gray-500 text-white rounded-full hover:bg-red-600 focus:outline-none" title="Delete all grades">
+        <i (click)="deleteAllGrades(student)" class="fas fa-dumpster-fire"></i>
+      </button>
+    </td>
+    <td class="border px-4 py-2">
+      <button class="flex items-center p-2 bg-gray-500 text-white rounded-full hover:bg-red-600 focus:outline-none" title="Show all grades">
+        <i (click)="showAllGrades(student)" class="fas fa-school"></i>
+      </button>
+    </td>
+  </tr>
+  </ng-container>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
